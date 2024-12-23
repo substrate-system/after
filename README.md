@@ -8,10 +8,22 @@
 [![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-[`after`](https://github.com/Raynos/after), for the world of promises. Resolve a promise after some number of calls.
+[`after`](https://github.com/Raynos/after), but for the world of promises. Resolve a promise after some number of calls.
 
 <details><summary><h2>Contents</h2></summary>
+
 <!-- toc -->
+
+- [install](#install)
+- [Module Format](#module-format)
+  * [ESM](#esm)
+  * [Common JS](#common-js)
+  * [pre-built JS](#pre-built-js)
+- [Example](#example)
+  * [async](#async)
+
+<!-- tocstop -->
+
 </details>
 
 ## install
@@ -20,7 +32,7 @@
 npm i -S @substrate-system/after
 ```
 
-## Format
+## Module Format
 
 This exposes ESM and common JS via [package.json `exports` field](https://nodejs.org/api/packages.html#exports).
 
@@ -49,7 +61,7 @@ cp ./node_modules/@substrate-system/package/dist/index.min.js ./public/after.min
 ```
 
 ## Example
-Resolve a promise after some number of calls.
+Resolve a promise after some number of function calls.
 
 ```js
 import { after } from '@substrate-system/after'
@@ -69,7 +81,25 @@ setTimeout(() => next(), 30)
 setTimeout(() => next(), 40)
 
 next.then(() => {
-    console.log('60ms later...')
-    // 10 + 20 + 30
+    console.log('30ms later...')
 })
+```
+
+### async
+
+```js
+const next = after(3)
+
+setTimeout(() => next, 100)
+setTimeout(() => next, 200)
+setTimeout(() => next, 300)
+
+const time = Number(new Date())
+
+await next  // wait for 3 calls -- 300ms
+
+const afterTime = Number(new Date())
+const diff = afterTime - time
+
+console.log(diff >= 300)  // true
 ```

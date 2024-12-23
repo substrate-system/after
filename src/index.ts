@@ -7,12 +7,9 @@ export function after (n:number) {
     })
 
     function plus () {
+        if (_n > n) return
         _n++
-        if (_n === n) {
-            _resolve()
-        } else {
-            // do nothing
-        }
+        if (_n === n) _resolve()
     }
 
     const proxy = new Proxy(plus, {
@@ -20,7 +17,7 @@ export function after (n:number) {
             return target.apply(thisArg, [])
         },
 
-        get (target, prop) {
+        get (_target, prop) {
             const value = promise[prop]
             return typeof value === 'function' ? value.bind(promise) : value
         }
