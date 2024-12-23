@@ -10,6 +10,8 @@
 
 [`after`](https://github.com/Raynos/after), but for the world of promises. Resolve a promise after some number of calls.
 
+This depends on an environment with [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).
+
 <details><summary><h2>Contents</h2></summary>
 
 <!-- toc -->
