@@ -63,7 +63,9 @@ cp ./node_modules/@substrate-system/package/dist/index.min.js ./public/after.min
 ```
 
 ## Example
-Resolve a promise after some number of function calls.
+Resolve a promise after three function calls.
+
+The value returned, `next`, is a function and also a promise. Call it when you want to increment the count.
 
 ```js
 import { after } from '@substrate-system/after'
