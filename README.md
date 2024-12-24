@@ -8,7 +8,7 @@
 [![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![license](https://img.shields.io/badge/license-Polyform_Non_Commercial-26bc71?style=flat-square)](LICENSE)
 
-[`after`](https://github.com/Raynos/after), but for the world of promises. Resolve a promise after some number of calls.
+Like [`after`](https://github.com/Raynos/after), but for the world of promises. Resolve a promise after some number of calls.
 
 This depends on an environment with [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy).
 
