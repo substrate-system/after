@@ -54,7 +54,7 @@ accessible to your web server, then link to them in HTML.
 
 #### copy
 ```sh
-cp ./node_modules/@substrate-system/package/dist/index.min.js ./public/after.min.js
+cp ./node_modules/@substrate-system/after/dist/index.min.js ./public/after.min.js
 ```
 
 #### HTML
