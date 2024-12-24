@@ -1,6 +1,6 @@
 {
   "name": "@substrate-system/after",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Resolve promises after a number of function calls",
   "directories": {
     "example": "example",
