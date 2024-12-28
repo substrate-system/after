@@ -19,7 +19,7 @@ export function after (n:number):Promise<void> & ((count?:number)=>void) {
 
     const proxy = new Proxy(plus, {
         apply (target, thisArg, ...rest:[any]) {
-            return target.apply(thisArg, [...rest])
+            return target.apply(thisArg, ...rest)
         },
 
         get (_target, prop) {
