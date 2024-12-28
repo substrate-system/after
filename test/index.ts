@@ -56,3 +56,11 @@ test('async style', async t => {
 
     return next
 })
+
+test('can pass in a number to increment', t => {
+    const plus = after(3)
+    const foo = 3
+    t.equal(foo, 3, 'resolves promise after incrementing')
+    plus(3)
+    return plus
+})

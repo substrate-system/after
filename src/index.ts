@@ -1,4 +1,4 @@
-export function after (n:number) {
+export function after (n:number):Promise<void> & ((count?:number)=>void) {
     let _n = 0
 
     let _resolve
@@ -6,15 +6,20 @@ export function after (n:number) {
         _resolve = resolve
     })
 
-    function plus () {
+    function plus (count?:number):void {
         if (_n > n) return
-        _n++
+        if (count) {
+            _n += count
+        } else {
+            _n++
+        }
+
         if (_n === n) _resolve()
     }
 
     const proxy = new Proxy(plus, {
-        apply (target, thisArg, _args) {
-            return target.apply(thisArg, [])
+        apply (target, thisArg, ...rest:[any]) {
+            return target.apply(thisArg, [...rest])
         },
 
         get (_target, prop) {
@@ -23,7 +28,7 @@ export function after (n:number) {
         }
     })
 
-    return (proxy as Promise<void> & (()=>void))
+    return (proxy as Promise<void> & ((count?:number)=>void))
 }
 
 export default after
